@@ -19,49 +19,53 @@
         <div class="row">
             {% if corretor %}
             <form action="/corretores/editar/{{ corretor.id }}" method="POST" class="mt-5 col-md-6">
-            {% else %}
-            <form action="/corretores/cadastrar" method="POST" class="mt-5 col-md-6">
-            {% endif %}
+                {% else %}
+                <form action="/corretores/cadastrar" method="POST" class="mt-5 col-md-6">
+                    {% endif %}
 
-                <div class="form-group">
-                    <div class="form-outline">
-                        <input type="text" name="creci" id="creci" class="form-control" value="{{ corretor.creci }}" required>
-                        <label class="form-label" for="creci">CRECI</label>
+                    <div class="form-group">
+                        <div class="form-outline">
+                            <input type="text" name="creci" id="creci" class="form-control"
+                                value="{% if corretor %}{{ corretor.creci }}{% endif %}" required>
+                            <label class="form-label" for="creci">CRECI</label>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <div class="form-outline">
-                        <input type="text" name="nome" id="nome" class="form-control" value="{{ corretor.nome }}" required>
-                        <label class="form-label" for="nome">Nome</label>
+                    <div class="form-group">
+                        <div class="form-outline">
+                            <input type="text" name="nome" id="nome" class="form-control"
+                                value="{% if corretor %}{{ corretor.nome }}{% endif %}" required>
+                            <label class="form-label" for="nome">Nome</label>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <div class="form-outline">
-                        <input type="email" name="email" id="email" class="form-control" value="{{ corretor.email }}" required>
-                        <label class="form-label" for="email">Email</label>
+                    <div class="form-group">
+                        <div class="form-outline">
+                            <input type="email" name="email" id="email" class="form-control"
+                                value="{% if corretor %}{{ corretor.email }}{% endif %}" required>
+                            <label class="form-label" for="email">Email</label>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <div class="form-outline">
-                        <input type="text" name="senha" id="senha" class="form-control" value="{{ corretor.senha }}" required>
-                        <label class="form-label" for="senha">Senha</label>
+                    <div class="form-group">
+                        <div class="form-outline">
+                            <input type="text" name="senha" id="senha" class="form-control"
+                                value="{% if corretor %}{{ corretor.senha }}{% endif %}" required>
+                            <label class="form-label" for="senha">Senha</label>
+                        </div>
                     </div>
-                </div>
 
-                <div class="d-flex">
-                    <button type="button" class="btn btn-outline-info btn-floating" data-toggle="tooltip"
-                    data-placement="right" title="Gerar senha aleatória" onclick="gerarSenha()">
-                        <i class="fas fa-random"></i>
-                    </button>
+                    <div class="d-flex">
+                        <button type="button" class="btn btn-outline-info btn-floating" data-toggle="tooltip"
+                            data-placement="right" title="Gerar senha aleatória" onclick="gerarSenha()">
+                            <i class="fas fa-random"></i>
+                        </button>
 
-                    <button class="btn btn-info ml-auto mt-5">
-                        Salvar<i class="fas fa-angle-double-right ml-1"></i>
-                    </button>
-                </div>
-            </form>
+                        <button class="btn btn-info ml-auto mt-5">
+                            Salvar<i class="fas fa-angle-double-right ml-1"></i>
+                        </button>
+                    </div>
+                </form>
         </div>
     </div>
 </div>
