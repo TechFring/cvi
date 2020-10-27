@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+{% block title %}{{ super() }}Entrar{% endblock %}
+
+{% block content %}
+
+<div class="h-100 d-flex anime-left">
+    <div class="d-flex align-items-center justify-content-center w-100 col-12 col-sm-6 flex-column">
+        <div class="w-75 px-sm-5">
+            <h5 class="mb-5 text-left">Administrativo</h5>
+            
+            <div class="d-none d-sm-block">
+                <h2 class="mb-4 pt-5">Encontre agora mesmo os melhores imóveis.</h2>
+    
+                <p class="mb-5">Bem-vindo de volta! Por favor acesse sua conta.</p>
+            </div>
+
+            <form action="/login" method="POST">
+                <div class="form-group">
+                    <div class="form-outline">
+                        <input type="text" name="nome_usuario" id="nome_usuario" class="form-control" required />
+                        <label class="form-label" for="nome_usuario">Usuário</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-outline">
+                        <input type="password" name="senha" id="senha" class="form-control" required />
+                        <label class="form-label" for="senha">Senha</label>
+                    </div>
+
+                    <a href="#">
+                        <small class="float-right mt-1">Esqueceu sua senha?</small>
+                    </a>
+                </div>
+
+                <button type="submit" class="btn btn-warning mt-5">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="d-none d-sm-block col-sm-6 bg-login">
+    </div>
+</div>
+
+{% endblock %}

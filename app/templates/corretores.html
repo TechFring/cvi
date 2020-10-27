@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% block title %}{{ super() }}Corretores{% endblock %}
+
+{% block content %}
+{% include 'partials/sidebar.html' %}
+
+<div class="content anime-left h-100">
+    <div class="px-4 h-100">
+        <h3 class="mt-4">
+            <strong>Corretores</strong>
+        </h3>
+
+        <a href="/corretores/cadastrar">
+            <button class="btn btn-warning mt-5">
+                Cadastrar<i class="fas fa-angle-double-right ml-1"></i>
+            </button>
+        </a>
+
+        {% if corretores %}
+        <table class="mt-5 table table-bordered">
+            <thead>
+                <th>CRECI</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th class="text-center"><i class="fas fa-cog"></i></th>
+            </thead>
+
+            <tbody>
+                {% for item in corretores %}
+                    <tr>
+                        <td>{% item.creci %}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% else %}
+        <div class="col-12 h-50 bg-not-found mt-5">
+        </div>
+        <p class="lead text-center">
+            <strong>Nennhum registro encontrado</strong>
+        </p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

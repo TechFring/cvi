@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+{% block title %}{{ super() }}Corretores{% endblock %}
+
+{% block content %}
+{% include 'partials/sidebar.html' %}
+
+<div class="content anime-left">
+    <div class="px-4">
+        <h3 class="mt-4">
+            <strong>Cadastrar corretor</strong>
+        </h3>
+
+        <a href="/corretores">
+            <button class="btn btn-warning mt-5">
+                <i class="fas fa-angle-double-left mr-1"></i>Voltar
+            </button>
+        </a>
+
+        <div class="row">
+            <form action="/corretores/cadastrar" method="POST" class="mt-5 col-md-6">
+                <div class="form-group">
+                    <div class="form-outline">
+                        <input type="text" name="creci" id="creci" class="form-control" required>
+                        <label class="form-label" for="creci">CRECI</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-outline">
+                        <input type="text" name="nome" id="nome" class="form-control" required>
+                        <label class="form-label" for="nome">Nome</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-outline">
+                        <input type="email" name="email" id="email" class="form-control" required>
+                        <label class="form-label" for="email">Email</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-outline">
+                        <input type="text" name="senha" id="senha" class="form-control" required>
+                        <label class="form-label" for="senha">Senha</label>
+                    </div>
+                </div>
+
+                <div class="d-flex">
+                    <button type="button" class="btn btn-outline-info btn-floating" data-toggle="tooltip"
+                    data-placement="right" title="Gerar senha aleatória" onclick="gerarSenha()">
+                        <i class="fas fa-random"></i>
+                    </button>
+
+                    <button class="btn btn-info ml-auto mt-5">
+                        Salvar<i class="fas fa-angle-double-right ml-1"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/corretores.js') }}"></script>
+{% endblock %}
