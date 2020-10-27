@@ -17,31 +17,36 @@
         </a>
 
         <div class="row">
+            {% if corretor %}
+            <form action="/corretores/editar/{{ corretor.id }}" method="POST" class="mt-5 col-md-6">
+            {% else %}
             <form action="/corretores/cadastrar" method="POST" class="mt-5 col-md-6">
+            {% endif %}
+
                 <div class="form-group">
                     <div class="form-outline">
-                        <input type="text" name="creci" id="creci" class="form-control" required>
+                        <input type="text" name="creci" id="creci" class="form-control" value="{{ corretor.creci }}" required>
                         <label class="form-label" for="creci">CRECI</label>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="form-outline">
-                        <input type="text" name="nome" id="nome" class="form-control" required>
+                        <input type="text" name="nome" id="nome" class="form-control" value="{{ corretor.nome }}" required>
                         <label class="form-label" for="nome">Nome</label>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="form-outline">
-                        <input type="email" name="email" id="email" class="form-control" required>
+                        <input type="email" name="email" id="email" class="form-control" value="{{ corretor.email }}" required>
                         <label class="form-label" for="email">Email</label>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="form-outline">
-                        <input type="text" name="senha" id="senha" class="form-control" required>
+                        <input type="text" name="senha" id="senha" class="form-control" value="{{ corretor.senha }}" required>
                         <label class="form-label" for="senha">Senha</label>
                     </div>
                 </div>

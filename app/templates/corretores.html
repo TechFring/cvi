@@ -26,6 +26,34 @@
             </thead>
 
             <tbody>
+                {% for x in corretores %}
+                <tr>
+                    <td>{{ x.creci }}</td>
+                    <td>{{ x.nome }}</td>
+                    <td>{{ x.email }}</td>
+                    <td class="text-center">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+                                aria-expanded="false">
+                                Ver mais
+                            </button>
+
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="/corretores/editar/{{ x.id }}">
+                                        <i class="fas fa-edit mr-2"></i>Editar
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/corretores/apagar/{{ x.id }}">
+                                        <i class="fas fa-trash-alt mr-2"></i>Apagar
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
             </tbody>
         </table>
 
@@ -37,7 +65,7 @@
         </p>
         {% endif %}
     </div>
-    
+
 </div>
 
 {% endblock %}
