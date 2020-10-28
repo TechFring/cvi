@@ -26,11 +26,11 @@
             </thead>
 
             <tbody>
-                {% for x in corretores %}
+                {% for corretor in corretores %}
                 <tr>
-                    <td>{{ x.creci }}</td>
-                    <td>{{ x.nome }}</td>
-                    <td>{{ x.email }}</td>
+                    <td>{{ corretor.creci }}</td>
+                    <td>{{ corretor.nome }}</td>
+                    <td>{{ corretor.email }}</td>
                     <td class="text-center">
                         <div class="btn-group">
                             <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
@@ -40,12 +40,12 @@
 
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item" href="/corretores/editar/{{ x.id }}">
+                                    <a class="dropdown-item" href="/corretores/editar/{{ corretor.id }}">
                                         <i class="fas fa-edit mr-2"></i>Editar
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="#" onclick="apagarCorretor('{{ x.id }}')">
+                                    <a class="dropdown-item" href="#" onclick="apagarCorretor('{{ corretor.id }}')">
                                         <i class="fas fa-trash-alt mr-2"></i>Apagar
                                     </a>
                                 </li>
@@ -61,7 +61,7 @@
         <div class="col-12 h-50 bg-not-found mt-5">
         </div>
         <p class="lead text-center">
-            <strong>Nennhum registro encontrado</strong>
+            <strong>Nenhum registro encontrado</strong>
         </p>
         {% endif %}
     </div>

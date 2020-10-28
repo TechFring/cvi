@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <div class="form-outline">
                             <input type="text" name="creci" id="creci" class="form-control"
-                                value="{% if corretor %}{{ corretor.creci }}{% endif %}" required>
+                                value="{{ corretor.creci }}" required>
                             <label class="form-label" for="creci">CRECI</label>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                     <div class="form-group">
                         <div class="form-outline">
                             <input type="text" name="nome" id="nome" class="form-control"
-                                value="{% if corretor %}{{ corretor.nome }}{% endif %}" required>
+                                value="{{ corretor.nome }}" required>
                             <label class="form-label" for="nome">Nome</label>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                     <div class="form-group">
                         <div class="form-outline">
                             <input type="email" name="email" id="email" class="form-control"
-                                value="{% if corretor %}{{ corretor.email }}{% endif %}" required>
+                                value="{{ corretor.email }}" required>
                             <label class="form-label" for="email">Email</label>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                     <div class="form-group">
                         <div class="form-outline">
                             <input type="text" name="senha" id="senha" class="form-control"
-                                value="{% if corretor %}{{ corretor.senha }}{% endif %}" required>
+                                value="{{ corretor.senha }}" required>
                             <label class="form-label" for="senha">Senha</label>
                         </div>
                     </div>

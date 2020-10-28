@@ -1,6 +1,6 @@
 from app import app, login_manager, db
 from flask_login import login_user, logout_user, current_user
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash
 
 # Models
 from app.models.secretaria import Secretaria
@@ -21,6 +21,7 @@ def login():
     secretaria = Secretaria.query.filter_by(nome_usuario=nome_usuario).first()
 
     if not secretaria or not secretaria.verificar_senha(senha):
+        flash("Credenciais incorretas")
         return redirect(url_for("login"))
 
     login_user(secretaria)

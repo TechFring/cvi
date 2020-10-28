@@ -23,7 +23,7 @@ def cadastrar_corretor():
         return redirect(url_for("login"))
 
     if request.method == "GET":
-        return render_template("cadastrar-corretor.html")
+        return render_template("cadastrar-corretor.html", corretor=None)
 
     # Cadastrando corretor
     creci = request.form['creci']

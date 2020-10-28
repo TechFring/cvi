@@ -3,13 +3,25 @@
 
 {% block content %}
 
+{% with messages = get_flashed_messages() %}
+
 <div class="h-100 d-flex anime-left">
     <div class="d-flex align-items-center justify-content-center w-100 col-12 col-sm-6 flex-column">
         <div class="w-75 px-sm-5">
             <div class="d-none d-sm-block">
                 <h2 class="mb-4 pt-5">Encontre agora mesmo os melhores imóveis.</h2>
-    
+
                 <p class="mb-5">Bem-vindo de volta! Por favor acesse sua conta.</p>
+
+                {% if messages %}
+                {% for message in messages %}
+                <p class="text text-danger">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>{{ message }}</small>
+                </p>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
             </div>
 
             <form action="/login" method="POST">
