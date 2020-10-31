@@ -7,7 +7,7 @@ from app.models.corretor import Corretor
 
 
 # Rotas
-@app.route("/corretores", methods=["GET", "POST"])
+@app.route("/corretores", methods=["GET"])
 def corretores():
     if not current_user.is_authenticated:
         return redirect(url_for("login"))

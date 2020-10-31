@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% block title %}{{ super() }}Corretores{% endblock %}
+{% block title %}{{ super() }}Imóveis{% endblock %}
 
 {% block content %}
 {% include 'partials/sidebar.html' %}
@@ -7,31 +7,39 @@
 <div class="content anime-left h-100">
     <div class="px-4 h-100">
         <h3 class="mt-4">
-            <strong>Corretores</strong>
+            <strong>Imóveis</strong>
         </h3>
 
-        <a href="/corretores/cadastrar">
+        <a href="/imoveis/cadastrar">
             <button class="btn btn-warning mt-5">
                 Cadastrar<i class="fas fa-angle-double-right ml-1"></i>
             </button>
         </a>
 
-        {% if corretores %}
+        {% if imoveis %}
         <table class="mt-5 table table-bordered">
             <thead>
-                <th>CRECI</th>
-                <th>Nome</th>
-                <th>Email</th>
+                <th class="text-center">Capa</th>
+                <th>Endereço</th>
+                <th>Tamanho</th>
+                <th>Descrição</th>
                 <th class="text-center"><i class="fas fa-cog"></i></th>
             </thead>
 
             <tbody>
-                {% for corretor in corretores %}
+                {% for imovel in imoveis %}
                 <tr>
-                    <td class="align-middle">{{ corretor.creci }}</td>
-                    <td class="align-middle">{{ corretor.nome }}</td>
-                    <td class="align-middle">{{ corretor.email }}</td>
-                    <td class="text-center">
+                    {% if imovel.capa %}
+                    <td class="text-center align-middle"><img class="img-house"
+                            src="http://localhost:5000/static/uploads/capas/{{ imovel.capa }}" alt="Foto de capa"></td>
+                    {% else %}
+                    <td class="text-center align-middle"><i class="fas fa-file-image fa-2x"></i></td>
+                    {% endif %}
+
+                    <td class="align-middle">{{ imovel.endereco }}</td>
+                    <td class="align-middle">{{ imovel.tamanho }}m²</td>
+                    <td class="align-middle">{{ imovel.descricao }}</td>
+                    <td class="text-center align-middle">
                         <div class="btn-group">
                             <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
                                 aria-expanded="false">
@@ -40,12 +48,19 @@
 
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item" href="/corretores/editar/{{ corretor.id }}">
+                                    <a class="dropdown-item" href="/imoveis/editar/{{ imovel.id }}">
                                         <i class="fas fa-edit mr-2"></i>Editar
                                     </a>
                                 </li>
+
                                 <li>
-                                    <a class="dropdown-item" href="#" onclick="apagarCorretor('{{ corretor.id }}')">
+                                    <a class="dropdown-item" href="/imoveis/informacoes/{{ imovel.id }}">
+                                        <i class="far fa-life-ring mr-2"></i>Informações
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" href="#" onclick="apagarImovel('{{ imovel.id }}')">
                                         <i class="fas fa-trash-alt mr-2"></i>Apagar
                                     </a>
                                 </li>
@@ -68,5 +83,5 @@
 
 </div>
 
-<script src="{{ url_for('static', filename='js/corretores.js') }}"></script>
+<script src="{{ url_for('static', filename='js/imoveis.js') }}"></script>
 {% endblock %}

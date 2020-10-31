@@ -12,11 +12,13 @@ class Secretaria(db.Model, UserMixin):
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     nome = db.Column(db.String(255), nullable=False)
     nome_usuario = db.Column(db.String(100), nullable=False, unique=True)
+    email = db.Column(db.String(100), nullable=False, unique=True)
     senha = db.Column(db.String(100), nullable=False)
 
-    def __init__(self, nome, nome_usuario, senha):
+    def __init__(self, nome, nome_usuario, email, senha):
         self.nome = nome
         self.nome_usuario = nome_usuario
+        self.email = email
         self.senha = generate_password_hash(senha)
 
     def verificar_senha(self, senha):

@@ -6,9 +6,15 @@
 
 <div class="content anime-left">
     <div class="px-4">
+        {% if corretor %}
+        <h3 class="mt-4">
+            <strong>Editar corretor</strong>
+        </h3>
+        {% else %}
         <h3 class="mt-4">
             <strong>Cadastrar corretor</strong>
         </h3>
+        {% endif %}
 
         <a href="/corretores">
             <button class="btn btn-warning mt-5">
@@ -20,21 +26,21 @@
             {% if corretor %}
             <form action="/corretores/editar/{{ corretor.id }}" method="POST" class="mt-5 col-md-6">
                 {% else %}
-                <form action="/corretores/cadastrar" method="POST" class="mt-5 col-md-6">
+                <form action="/corretores/cadastrar" method="POST" class="mt-5 col-12 col-md-6">
                     {% endif %}
 
                     <div class="form-group">
                         <div class="form-outline">
-                            <input type="text" name="creci" id="creci" class="form-control"
-                                value="{{ corretor.creci }}" required>
+                            <input type="text" name="creci" id="creci" class="form-control" value="{{ corretor.creci }}"
+                                required>
                             <label class="form-label" for="creci">CRECI</label>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="form-outline">
-                            <input type="text" name="nome" id="nome" class="form-control"
-                                value="{{ corretor.nome }}" required>
+                            <input type="text" name="nome" id="nome" class="form-control" value="{{ corretor.nome }}"
+                                required>
                             <label class="form-label" for="nome">Nome</label>
                         </div>
                     </div>
@@ -49,8 +55,8 @@
 
                     <div class="form-group">
                         <div class="form-outline">
-                            <input type="text" name="senha" id="senha" class="form-control"
-                                value="{{ corretor.senha }}" required>
+                            <input type="text" name="senha" id="senha" class="form-control" value="{{ corretor.senha }}"
+                                required>
                             <label class="form-label" for="senha">Senha</label>
                         </div>
                     </div>

@@ -1,0 +1,24 @@
+<div class="modal fade" id="modalFoto" tabindex="-1" aria-labelledby="modalFotoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-info text-white">
+                <h5 class="modal-title" id="modalFotoLabel">Visualizar foto</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body h-100 p-none">
+                {% if imovel.capa %}
+                    <img src="http://localhost:5000/static/uploads/capas/{{ imovel.capa }}" id="photo">
+                {% else %}
+                    <img id="photo">
+                {% endif %}
+            </div>
+
+            <div class="modal-footer bg-info">
+                <a href="#" class="text-white" data-dismiss="modal">
+                    <strong>Fechar</strong>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

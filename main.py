@@ -4,6 +4,7 @@ from flask import redirect, url_for
 # Rotas
 from app.controllers import login
 from app.controllers import corretores
+from app.controllers import imoveis
 
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")

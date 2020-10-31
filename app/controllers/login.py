@@ -33,9 +33,10 @@ def login():
 # def criar_usuario():
 #     nome = "Secretária"
 #     nome_usuario = "secretaria"
+#     email = "danilo030920@gmail.com"
 #     senha = "12345"
 
-#     secretaria = Secretaria(nome, nome_usuario, senha)
+#     secretaria = Secretaria(nome, nome_usuario, email, senha)
 #     db.session.add(secretaria)
 #     db.session.commit()
 

@@ -6,9 +6,17 @@ html {
   overflow: hidden;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
+.p-none {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
 /*
 Background*/
-
 .bg-login {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("../img/background-login.jpg") center center no-repeat !important;
@@ -37,7 +45,6 @@ Animation*/
 
 /*
 Sidebar*/
-
 .sidebar {
   background: #363740;
   padding-top: 30px;
@@ -87,7 +94,45 @@ Sidebar*/
 
 /*
 Table*/
-
 th {
   font-weight: bold !important;
+}
+
+.img-house {
+  height: 60px;
+  width: 60px;
+  border-radius: 30px;
+}
+
+/*
+Form*/
+textarea {
+  resize: none;
+  height: 15.9rem !important;
+}
+
+.form-file {
+  padding-bottom: 2.4rem !important;
+}
+
+.form-file label {
+  height: 2.4rem !important;
+}
+
+/*
+Modal*/
+.modal-header {
+  border-bottom: none !important;
+}
+
+.modal-footer {
+  border-top: none !important;
+}
+
+/*
+Modal*/
+#map, #photo {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
 }
