@@ -1,4 +1,4 @@
-from app import db, login_manager
+from app import db
 
 
 class FotoInterior(db.Model):

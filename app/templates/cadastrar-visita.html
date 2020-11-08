@@ -1,0 +1,108 @@
+{% extends 'layout.html' %}
+{% block title %}{{ super() }}Visitas{% endblock %}
+
+{% block content %}
+{% include 'partials/sidebar.html' %}
+
+<div class="content anime-left mb-5">
+    <div class="px-4">
+        {% if visita %}
+        <h3 class="mt-4">
+            <strong>Editar visita</strong>
+        </h3>
+        {% else %}
+        <h3 class="mt-4">
+            <strong>Cadastrar visita</strong>
+        </h3>
+        {% endif %}
+
+        <a href="/visitas">
+            <button class="btn btn-warning mt-5">
+                <i class="fas fa-angle-double-left mr-1"></i>Voltar
+            </button>
+        </a>
+
+        <div class="row">
+            {% if visita %}
+            <form action="/visitas/editar/{{ visita.id }}" method="POST" class="mt-5">
+                {% else %}
+                <form action="/visitas/cadastrar" method="POST" class="mt-5">
+                    {% endif %}
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
+                                <select class="form-control" name="id_imovel" required>
+                                    <option value="">Selecione o imóvel</option>
+
+                                    {% for imovel in imoveis %}
+                                    {% if imovel.id == visita.id_imovel %}
+                                    <option value="{{ imovel.id }}" selected>
+                                        {{ imovel.endereco }}
+                                    </option>
+                                    {% else %}
+                                    <option value="{{ imovel.id }}">
+                                        {{ imovel.endereco }}
+                                    </option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <select class="form-control" name="id_corretor" required>
+                                    <option value="">Selecione o corretor</option>
+
+                                    {% for corretor in corretores %}
+                                    {% if corretor.id == visita.id_corretor %}
+                                    <option value="{{ corretor.id }}" selected>
+                                        {{ corretor.nome }}
+                                    </option>
+                                    {% else %}
+                                    <option value="{{ corretor.id }}">
+                                        {{ corretor.nome }}
+                                    </option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="form-outline">
+                                    <input type="datetime-local" name="dia" id="dia" class="form-control"
+                                        value="{{ visita.dia }}" required>
+                                    <label class="form-label" for="dia">Dia e horário</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="form-outline">
+                                    <input type="text" name="nome_cliente" id="nome_cliente" class="form-control"
+                                        value="{{ visita.nome_cliente }}" required>
+                                    <label class="form-label" for="nome_cliente">Nome do cliente</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="form-outline">
+                                    <input type="text" name="telefone_cliente" id="telefone_cliente"
+                                        class="form-control" value="{{ visita.telefone_cliente }}" required>
+                                    <label class="form-label" for="telefone_cliente">Telefone do cliente</label>
+                                </div>
+                            </div>
+
+                            <div class="d-flex">
+                                <button class="btn btn-info ml-auto mt-5">
+                                    Salvar<i class="fas fa-angle-double-right ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='libs/jquery-mask/jquery.mask.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/visitas.js') }}"></script>
+
+{% endblock %}

@@ -1,8 +1,7 @@
-from app import db, login_manager
-from flask_login import UserMixin
+from app import db
 
 
-class Corretor(db.Model, UserMixin):
+class Corretor(db.Model):
     __tablename__ = "corretor"
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     creci = db.Column(db.String(50), nullable=False, unique=True)

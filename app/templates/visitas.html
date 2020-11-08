@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% block title %}{{ super() }}Imóveis{% endblock %}
+{% block title %}{{ super() }}Visitas{% endblock %}
 
 {% block content %}
 {% include 'partials/sidebar.html' %}
@@ -7,40 +7,41 @@
 <div class="content anime-left h-100">
     <div class="px-4 h-100">
         <h3 class="mt-4">
-            <strong>Imóveis</strong>
+            <strong>Visitas</strong>
         </h3>
 
-        <a href="/imoveis/cadastrar">
+        <a href="/visitas/cadastrar">
             <button class="btn btn-warning mt-5">
                 Cadastrar<i class="fas fa-angle-double-right ml-1"></i>
             </button>
         </a>
 
-        {% if imoveis %}
+        {% if visitas %}
         <table class="mt-5 table table-bordered">
             <thead>
-                <th class="text-center">Capa</th>
-                <th>Endereço</th>
-                <th>Tamanho</th>
-                <th>Descrição</th>
+                <th class="text-center">Imóvel</th>
+                <th>Corretor</th>
+                <th>Dia</th>
+                <th>Cliente</th>
+                <th>Telefone</th>
                 <th class="text-center"><i class="fas fa-cog"></i></th>
             </thead>
 
             <tbody>
-                {% for imovel in imoveis %}
+                {% for visita in visitas %}
                 <tr>
-                    {% if imovel.capa %}
+                    {% if visita.capa %}
                     <td class="text-center align-middle">
-                        <img class="img-house" src="/static/uploads/capas/{{ imovel.capa }}"
-                            alt="Foto de capa">
+                        <img class="img-house" src="/static/uploads/capas/{{ visita.capa }}" alt="Foto de capa">
                     </td>
                     {% else %}
                     <td class="text-center align-middle"><i class="fas fa-file-image fa-2x"></i></td>
                     {% endif %}
 
-                    <td class="align-middle">{{ imovel.endereco }}</td>
-                    <td class="align-middle">{{ imovel.tamanho }}m²</td>
-                    <td class="align-middle">{{ imovel.descricao }}</td>
+                    <td class="align-middle">{{ visita.nome_corretor }}</td>
+                    <td class="align-middle">{{ visita.dia_formatado }}</td>
+                    <td class="align-middle">{{ visita.nome_cliente }}</td>
+                    <td class="align-middle">{{ visita.telefone_cliente }}</td>
                     <td class="text-center align-middle">
                         <div class="btn-group">
                             <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
@@ -50,19 +51,13 @@
 
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item" href="/imoveis/editar/{{ imovel.id }}">
+                                    <a class="dropdown-item" href="/visitas/editar/{{ visita.id }}">
                                         <i class="fas fa-edit mr-2"></i>Editar
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a class="dropdown-item" href="/imoveis/informacoes/{{ imovel.id }}">
-                                        <i class="far fa-life-ring mr-2"></i>Informações
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a class="dropdown-item" href="#" onclick="apagarImovel('{{ imovel.id }}')">
+                                    <a class="dropdown-item" href="#" onclick="apagarVisita('{{ visita.id }}')">
                                         <i class="fas fa-trash-alt mr-2"></i>Apagar
                                     </a>
                                 </li>
@@ -85,5 +80,5 @@
 
 </div>
 
-<script src="{{ url_for('static', filename='js/imoveis.js') }}"></script>
+<script src="{{ url_for('static', filename='js/visitas.js') }}"></script>
 {% endblock %}
