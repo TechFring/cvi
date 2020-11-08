@@ -1,6 +1,6 @@
 const pathname = window.location.pathname.split("/");
 
-if (pathname[2] && pathname[2] === "editar") {
+if (pathname[2] && pathname[2] === "cadastrar") {
   const dia = document.getElementById("dia");
 
   (function () {
@@ -19,9 +19,11 @@ if (pathname[2] && pathname[2] === "editar") {
     const time = new Date().toLocaleTimeString("pt-BR", optionsHour);
 
     dia.value = date + "T" + time;
-
-    $("#telefone_cliente").mask("(99) 99999-9999");
   })();
+}
+
+if (pathname[2] === "editar" || pathname[2] === "cadastrar") {
+  $("#telefone_cliente").mask("(99) 99999-9999");
 }
 
 function apagarVisita(id) {

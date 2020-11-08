@@ -69,6 +69,10 @@ def editar_visita(id):
         return redirect(url_for("visitas"))
 
     if request.method == "GET":
+        dia = datetime.datetime.strptime(str(visita.dia), "%Y-%m-%d %H:%M:%S")
+        dia_formatado = datetime.datetime.strftime(dia, "%Y-%m-%dT%H:%M")
+        visita.dia_formatado = dia_formatado
+        
         imoveis = Imovel.query.all()
         corretores = Corretor.query.all()
         return render_template("cadastrar-visita.html", visita=visita, imoveis=imoveis, corretores=corretores)
