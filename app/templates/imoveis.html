@@ -4,6 +4,12 @@
 {% block content %}
 {% include 'partials/sidebar.html' %}
 
+{% if refresh %}
+<script>
+    window.location.reload(true);
+</script>
+{% endif %}
+
 <div class="content anime-left h-100">
     <div class="px-4 h-100">
         <h3 class="mt-4">
@@ -30,8 +36,10 @@
                 {% for imovel in imoveis %}
                 <tr>
                     {% if imovel.capa %}
-                    <td class="text-center align-middle"><img class="img-house"
-                            src="http://localhost:5000/static/uploads/capas/{{ imovel.capa }}" alt="Foto de capa"></td>
+                    <td class="text-center align-middle">
+                        <img class="img-house" src="/static/uploads/capas/{{ imovel.capa }}"
+                            alt="Foto de capa">
+                    </td>
                     {% else %}
                     <td class="text-center align-middle"><i class="fas fa-file-image fa-2x"></i></td>
                     {% endif %}

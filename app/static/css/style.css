@@ -3,7 +3,7 @@ html {
   margin: 0;
   padding: 0;
   height: 100vh;
-  overflow: hidden;
+  /* overflow-x: hidden; */
 }
 
 a:hover {
@@ -25,7 +25,7 @@ Background*/
 
 .bg-not-found {
   background: url("../img/not-found.svg") center center no-repeat !important;
-  background-size: 35% !important;
+  background-size: 30% !important;
 }
 
 /*
@@ -50,10 +50,10 @@ Sidebar*/
   padding-top: 30px;
   position: fixed;
   left: 0;
+  top: 0;
   width: 250px;
   height: 100%;
   transition: 0.5s;
-  transition-property: left;
 }
 
 .sidebar a {
@@ -86,10 +86,42 @@ Sidebar*/
 
 .content {
   margin-left: 250px;
+  margin-top: 7rem;
   background-position: center;
   background-size: cover;
-  height: 100vh;
   transition: 0.5s;
+}
+
+.sidebar-header {
+  position: fixed;
+  left: 250px;
+  top: 0;
+  padding-left: 1.5rem;
+  padding-top: 0.8rem;
+  padding-bottom: 0.3rem;
+  transition: 0.5s;
+  width: 100%;
+  z-index: 99;
+}
+
+#sidebar-check {
+  display: none;
+}
+
+#sidebar-btn {
+  cursor: pointer;
+}
+
+#sidebar-check:checked ~ .sidebar {
+  left: -250px;
+}
+
+#sidebar-check:checked ~ .content {
+  margin-left: -1px;
+}
+
+#sidebar-check:checked ~ .sidebar-header {
+  left: 0;
 }
 
 /*
@@ -135,4 +167,10 @@ Modal*/
   width: 100%;
   height: 400px;
   object-fit: cover;
+}
+
+/*
+Dropdown*/
+.dropdown-item {
+  cursor: pointer;
 }

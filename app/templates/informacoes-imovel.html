@@ -22,101 +22,187 @@
         <hr class="mt-4 mb-5">
 
         <div class="row">
-            <div class="row">
-                <div class="row">
-                    <div class="col-12 col-md-6">
-                        <h4 class="mb-4">Documentos</h4>
+            <div class="col-12 col-md-6">
+                <h4 class="mb-4">Documentos</h4>
 
-                        <form action="/imoveis/docs/{{ imovel.id }}" method="POST" enctype="multipart/form-data">
-                            <div class="form-group d-flex">
-                                <div class="form-file">
-                                    <input type="file" name="doc_imovel" id="doc_imovel" class="form-file-input"
-                                        accept="application/pdf">
-                                    <label class="form-file-label" for="doc_imovel">
-                                        <span class="form-file-text">Documento do imóvel</span>
-                                        <span class="form-file-button">Buscar</span>
-                                    </label>
-                                </div>
-
-                                <button class="ml-3 btn btn-outline-info btn-floating" data-toggle="tooltip"
-                                    data-placement="bottom" title="Visualizar documento">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-
-                                <button type="submit" class="ml-2 btn btn-info btn-floating" data-toggle="tooltip"
-                                    data-placement="bottom" title="Salvar" disabled>
-                                    <i class="fas fa-cloud-upload-alt"></i>
-                                </button>
+                <form action="/imoveis/informacoes/doc_imovel/{{ imovel.id }}" method="POST"
+                    enctype="multipart/form-data">
+                    <div class="form-group d-flex">
+                        <div>
+                            <div class="form-file">
+                                <input type="file" name="doc_imovel" id="doc_imovel" class="form-file-input"
+                                    accept="application/pdf">
+                                <label class="form-file-label" for="doc_imovel">
+                                    <span class="form-file-text">Documento do imóvel</span>
+                                    <span class="form-file-button">Buscar</span>
+                                </label>
                             </div>
-                        </form>
+                            <small class="text-danger" id="alert_doc_imovel"></small>
+                        </div>
 
-                        <form action="/imoveis/docs/{{ imovel.id }}" method="POST" enctype="multipart/form-data">
-                            <div class="form-group d-flex">
-                                <div class="form-file">
-                                    <input type="file" name="doc_proprietario" id="doc_proprietario"
-                                        class="form-file-input" accept="application/pdf">
-                                    <label class="form-file-label" for="doc_proprietario">
-                                        <span class="form-file-text">Certidões do proprietário</span>
-                                        <span class="form-file-button">Buscar</span>
-                                    </label>
-                                </div>
+                        <button type="button" class="ml-3 btn btn-outline-info btn-floating" data-toggle="tooltip"
+                            data-placement="bottom" title="Visualizar" id="visualizar_doc_imovel"
+                            {% if imovel.doc_imovel %} onclick="visualizarDoc(null, '{{ imovel.doc_imovel }}')"
+                            {% else %} disabled {% endif %}>
+                            <i class="fas fa-eye"></i>
+                        </button>
 
-                                <button class="ml-3 btn btn-outline-info btn-floating" data-toggle="tooltip"
-                                    data-placement="bottom" title="Visualizar documento">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-
-                                <button type="submit" class="ml-2 btn btn-info btn-floating" data-toggle="tooltip"
-                                    data-placement="bottom" title="Salvar" disabled>
-                                    <i class="fas fa-cloud-upload-alt"></i>
-                                </button>
-                            </div>
-                        </form>
+                        <button type="submit" class="ml-2 btn btn-info btn-floating" data-toggle="tooltip"
+                            data-placement="bottom" title="Salvar" id="salvar_doc_imovel" disabled>
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </button>
                     </div>
-                </div>
+                </form>
 
-                <div class="row mt-5">
-                    <div class="col-12 col-md-6">
+                <form action="/imoveis/informacoes/doc_proprietario/{{ imovel.id }}" method="POST"
+                    enctype="multipart/form-data">
+                    <div class="form-group d-flex">
+                        <div>
+                            <div class="form-file">
+                                <input type="file" name="doc_proprietario" id="doc_proprietario" class="form-file-input"
+                                    accept="application/pdf">
+                                <label class="form-file-label" for="doc_proprietario">
+                                    <span class="form-file-text">Certidões do proprietário</span>
+                                    <span class="form-file-button">Buscar</span>
+                                </label>
+                            </div>
+                            <small class="text-danger" id="alert_doc_proprietario"></small>
+                        </div>
 
-                        <h4 class="mb-4">Fotos</h4>
+                        <button type="button" class="ml-3 btn btn-outline-info btn-floating" data-toggle="tooltip"
+                            data-placement="bottom" title="Visualizar" id="visualizar_doc_proprietario"
+                            {% if imovel.doc_proprietario %}
+                            onclick="visualizarDoc(null, '{{ imovel.doc_proprietario }}')" {% else %} disabled
+                            {% endif %}>
+                            <i class="fas fa-eye"></i>
+                        </button>
 
-                        <form action="/imoveis/informacoes/{{ imovel.id }}" method="POST" enctype="multipart/form-data">
-                            <div class="form-group d-flex">
-                                <div>
-                                    <div class="form-file">
-                                        <input type="file" name="capa" id="capa" class="form-file-input"
-                                            accept="image/jpeg">
-                                        <label class="form-file-label" for="capa">
-                                            <span class="form-file-text">Capa</span>
-                                            <span class="form-file-button">Buscar</span>
-                                        </label>
+                        <button type="submit" class="ml-2 btn btn-info btn-floating" data-toggle="tooltip"
+                            data-placement="bottom" title="Salvar" id="salvar_doc_proprietario" disabled>
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-12 col-md-6">
+
+                <h4 class="mb-4">Fotos</h4>
+
+                <form action="/imoveis/informacoes/capa/{{ imovel.id }}" method="POST" enctype="multipart/form-data">
+                    <div class="form-group d-flex">
+                        <div>
+                            <div class="form-file">
+                                <input type="file" name="capa" id="capa" class="form-file-input" accept="image/jpeg">
+                                <label class="form-file-label" for="capa">
+                                    <span class="form-file-text">Capa</span>
+                                    <span class="form-file-button">Buscar</span>
+                                </label>
+                            </div>
+                            <small class="text-danger" id="alert_capa"></small>
+                        </div>
+
+                        <button type="button" class="ml-3 btn btn-outline-info btn-floating" data-toggle="tooltip"
+                            data-placement="bottom" title="Visualizar" id="visualizar_capa" {% if imovel.capa %}
+                            onclick="visualizarFoto(null, 'capas/{{ imovel.capa }}')" {% else %}
+                            onclick="visualizarFoto('#capa')" disabled {% endif %}>
+                            <i class="fas fa-eye"></i>
+                        </button>
+
+                        <button type="submit" class="ml-2 btn btn-info btn-floating" data-toggle="tooltip"
+                            data-placement="bottom" title="Salvar" id="salvar_capa" disabled>
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </button>
+                    </div>
+                </form>
+
+                <div>
+                    <form action="/imoveis/informacoes/foto_interior/{{ imovel.id }}" method="POST"
+                        enctype="multipart/form-data">
+                        <div class="form-group d-flex">
+                            <div>
+                                <div class="form-file">
+                                    <input type="file" name="foto_interior" id="foto_interior" class="form-file-input"
+                                        accept="image/jpeg">
+                                    <label class="form-file-label" for="foto_interior">
+                                        <span class="form-file-text">Interior do imóvel</span>
+                                        <span class="form-file-button">Buscar</span>
+                                    </label>
+                                </div>
+                                <small class="text-danger" id="alert_foto_interior"></small>
+                            </div>
+
+                            <span data-toggle="modal" data-target="#modalFoto">
+                                <button type="button" class="ml-3 btn btn-outline-info btn-floating"
+                                    data-toggle="tooltip" data-placement="bottom" title="Visualizar"
+                                    id="visualizar_foto_interior" onclick="visualizarFoto('#foto_interior')" disabled>
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </span>
+
+                            <button type="submit" class="ml-2 btn btn-info btn-floating" data-toggle="tooltip"
+                                data-placement="bottom" title="Salvar" id="salvar_foto_interior" disabled>
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                    {% if foto_interior %}
+                    <table class="table table-bordered my-5">
+                        <thead>
+                            <th class="text-center">Foto</th>
+                            <th class="text-center"><i class="fas fa-cog"></i></th>
+                        </thead>
+
+                        <tbody>
+                            {% for foto in foto_interior %}
+                            <tr>
+                                <td class="text-center align-middle">
+                                    <img class="img-house" src="/static/uploads/fotos_interior/{{ foto.foto }}">
+                                </td>
+                                <td class="text-center align-middle">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-light dropdown-toggle"
+                                            data-toggle="dropdown" aria-expanded="false">
+                                            Ver mais
+                                        </button>
+
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a class="dropdown-item"
+                                                    onclick="visualizarFoto(null, 'fotos_interior/{{ foto.foto }}')">
+                                                    <i class="far fa-eye mr-2"></i>Visualizar
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a class="dropdown-item"
+                                                    onclick="apagarFotoInterior('{{ imovel.id }}', '{{ foto.id }}')">
+                                                    <i class="fas fa-trash-alt mr-2"></i>Apagar
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <small class="text-danger" id="alert-capa"></small>
-                                </div>
-
-                                <span data-toggle="modal" data-target="#modalFoto">
-                                    <button type="button" class="ml-3 btn btn-outline-info btn-floating"
-                                        data-toggle="tooltip" data-placement="bottom" title="Visualizar foto">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                </span>
-
-                                <button type="submit" class="ml-2 btn btn-info btn-floating" data-toggle="tooltip"
-                                    data-placement="bottom" title="Salvar" id="salvar_foto" disabled>
-                                    <i class="fas fa-cloud-upload-alt"></i>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <p class="mt-5 mb-4">Nenhuma foto encontrada</p>
+                    {% endif %}
                 </div>
             </div>
-
         </div>
     </div>
+
 </div>
 
 {% include 'partials/modal-foto.html' %}
 
+<script src="{{ url_for('static', filename='js/imoveis.js') }}"></script>
 <script src="{{ url_for('static', filename='js/upload.js') }}"></script>
 
 {% endblock %}

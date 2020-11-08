@@ -1,10 +1,12 @@
 from app import app, db
 from flask_login import current_user
 from flask import render_template, request, redirect, url_for
+import uuid
 import os
 
 # Models
 from app.models.imovel import Imovel
+from app.models.foto_interior import FotoInterior
 
 
 # Rotas
@@ -13,10 +15,9 @@ def imoveis():
     if not current_user.is_authenticated:
         return redirect(url_for("login"))
 
-    refresh = request.args.get("refresh")
     imoveis = Imovel.query.all()
 
-    return render_template("imoveis.html", imoveis=imoveis, refresh=refresh)
+    return render_template("imoveis.html", imoveis=imoveis)
 
 
 @app.route("/imoveis/cadastrar", methods=["GET", "POST"])
@@ -50,7 +51,7 @@ def cadastrar_imovel():
 def editar_imovel(id):
     if not current_user.is_authenticated:
         return redirect(url_for("login"))
-    
+
     # recupera os dados do imóvel
     imovel = Imovel.query.filter_by(id=id).first()
 
@@ -75,56 +76,128 @@ def editar_imovel(id):
     return redirect(url_for("imoveis"))
 
 
-@app.route("/imoveis/informacoes/<id>", methods=["GET", "POST"])
-def continuar_cadastro(id):
+@app.route("/imoveis/informacoes/<id>", methods=["GET"])
+def informacoes_imovel(id):
     if not current_user.is_authenticated:
         return redirect(url_for("login"))
-    
+
     # recupera os dados do imóvel
     imovel = Imovel.query.filter_by(id=id).first()
 
     if not imovel:
         return redirect(url_for("imoveis"))
 
+    foto_interior = FotoInterior.query.filter_by(id_imovel=id).all()
+
     if request.method == "GET":
-        return render_template("informacoes-imovel.html", imovel=imovel)
+        return render_template("informacoes-imovel.html", imovel=imovel, foto_interior=foto_interior)
+
+
+@app.route("/imoveis/informacoes/doc_imovel/<id>", methods=["POST"])
+def imovel_doc_imovel(id):
+    if not current_user.is_authenticated:
+        return redirect(url_for("login"))
+
+    # recupera os dados do imóvel
+    imovel = Imovel.query.filter_by(id=id).first()
+
+    if not imovel:
+        return redirect(url_for("imoveis"))
 
     # Recuperando arquivos
-    # input_doc_imovel = request.files['doc_imovel']
-    # input_doc_proprietario = request.files['doc_proprietario']
-    input_capa = request.files['capa']
+    input_doc_imovel = request.files['doc_imovel']
 
-    # if input_doc_imovel.filename != '':
-    #     filename = "doc_imovel-", str(imovel.id), ".pdf"
-    #     path = os.path.join(app.config['UPLOAD_FOLDER'], "capas")
-    #     # os.makedirs(path)
-    #     input_capa.save(os.path.join(path, filename))
-    #     imovel.doc_imovel = filename
-
-    # if input_doc_proprietario.filename != '':
-    #     filename = "doc_proprietario-", str(imovel.id), ".pdf"
-    #     path = os.path.join(app.config['UPLOAD_FOLDER'], "capas")
-    #     # os.makedirs(path)
-    #     input_capa.save(os.path.join(path, filename))
-    #     imovel.doc_proprietario = filename
-    
-    if input_capa.filename != '':
-        filename = "capa-" + str(imovel.id) + ".jpg"
-        path = os.path.join(app.config['UPLOAD_FOLDER'], "capas")
-        # os.makedirs(path)
-        input_capa.save(os.path.join(path, filename))
-        imovel.capa = filename
+    filename = "doc_imovel-" + str(imovel.id) + ".pdf"
+    path = os.path.join(app.config['UPLOAD_FOLDER'], "docs")
+    input_doc_imovel.save(os.path.join(path, filename))
+    imovel.doc_imovel = filename
 
     db.session.commit()
 
-    return redirect(url_for("imoveis"))
+    return redirect("/imoveis/informacoes/" + str(imovel.id))
+
+
+@app.route("/imoveis/informacoes/doc_proprietario/<id>", methods=["POST"])
+def imovel_doc_proprietario(id):
+    if not current_user.is_authenticated:
+        return redirect(url_for("login"))
+
+    # recupera os dados do imóvel
+    imovel = Imovel.query.filter_by(id=id).first()
+
+    if not imovel:
+        return redirect(url_for("imoveis"))
+
+    # Recuperando arquivos
+    input_doc_proprietario = request.files['doc_proprietario']
+
+    filename = "doc_proprietario-" + str(imovel.id) + ".pdf"
+    path = os.path.join(app.config['UPLOAD_FOLDER'], "docs")
+    input_doc_proprietario.save(os.path.join(path, filename))
+    imovel.doc_proprietario = filename
+
+    db.session.commit()
+
+    return redirect("/imoveis/informacoes/" + str(imovel.id))
+
+
+@app.route("/imoveis/informacoes/capa/<id>", methods=["POST"])
+def imovel_capa(id):
+    if not current_user.is_authenticated:
+        return redirect(url_for("login"))
+
+    # recupera os dados do imóvel
+    imovel = Imovel.query.filter_by(id=id).first()
+
+    if not imovel:
+        return redirect(url_for("imoveis"))
+
+    # Recuperando arquivos
+    input_capa = request.files['capa']
+
+    filename = "capa-" + str(imovel.id) + ".jpg"
+    path = os.path.join(app.config['UPLOAD_FOLDER'], "capas")
+    input_capa.save(os.path.join(path, filename))
+    imovel.capa = filename
+
+    db.session.commit()
+
+    return redirect("/imoveis/informacoes/" + str(imovel.id))
+
+
+@app.route("/imoveis/informacoes/foto_interior/<id>", methods=["POST"])
+def imovel_foto_interior(id):
+    if not current_user.is_authenticated:
+        return redirect(url_for("login"))
+
+    # recupera os dados do imóvel
+    imovel = Imovel.query.filter_by(id=id).first()
+
+    if not imovel:
+        return redirect(url_for("imoveis"))
+
+    # Recuperando arquivos
+    input_foto_interior = request.files['foto_interior']
+
+    hash_foto = uuid.uuid4().hex
+
+    filename = "foto_interior-" + str(imovel.id) + "-" + hash_foto + ".jpg"
+    path = os.path.join(app.config['UPLOAD_FOLDER'], "fotos_interior")
+    input_foto_interior.save(os.path.join(path, filename))
+
+    foto_interior = FotoInterior(id, filename)
+
+    db.session.add(foto_interior)
+    db.session.commit()
+
+    return redirect("/imoveis/informacoes/" + str(imovel.id))
 
 
 @app.route("/imoveis/apagar/<id>", methods=["GET"])
 def apagar_imovel(id):
     if not current_user.is_authenticated:
         return redirect(url_for("login"))
-    
+
     # recupera os dados do imovel
     imovel = Imovel.query.filter_by(id=id).first()
 
@@ -136,3 +209,20 @@ def apagar_imovel(id):
     db.session.commit()
 
     return redirect(url_for("imoveis"))
+
+
+@app.route("/imoveis/informacoes/<id_imovel>/foto_interior/apagar/<id>", methods=["GET"])
+def apagar_foto_interior(id_imovel, id):
+    if not current_user.is_authenticated:
+        return redirect(url_for("login"))
+
+    # recupera os dados do imóvel
+    foto_interior = FotoInterior.query.filter_by(id=id).first()
+
+    if not foto_interior:
+        return redirect(url_for("imoveis"))
+
+    db.session.delete(foto_interior)
+    db.session.commit()
+
+    return redirect("/imoveis/informacoes/" + str(id_imovel))
