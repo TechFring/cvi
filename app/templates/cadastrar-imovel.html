@@ -5,116 +5,114 @@
 {% include 'partials/sidebar.html' %}
 
 <div class="content anime-left mb-5">
-    <div class="px-4">
+    {% if imovel %}
+    <h3 class="mt-4">
+        <strong>Editar imóvel</strong>
+    </h3>
+    {% else %}
+    <h3 class="mt-4">
+        <strong>Cadastrar imóvel</strong>
+    </h3>
+    {% endif %}
+
+    <a href="/imoveis">
+        <button class="btn btn-warning mt-5">
+            <i class="fas fa-angle-double-left mr-1"></i>Voltar
+        </button>
+    </a>
+
+    <div class="row">
         {% if imovel %}
-        <h3 class="mt-4">
-            <strong>Editar imóvel</strong>
-        </h3>
-        {% else %}
-        <h3 class="mt-4">
-            <strong>Cadastrar imóvel</strong>
-        </h3>
-        {% endif %}
+        <form action="/imoveis/editar/{{ imovel.id }}" method="POST" class="mt-5">
+            {% else %}
+            <form action="/imoveis/cadastrar" method="POST" class="mt-5">
+                {% endif %}
 
-        <a href="/imoveis">
-            <button class="btn btn-warning mt-5">
-                <i class="fas fa-angle-double-left mr-1"></i>Voltar
-            </button>
-        </a>
-
-        <div class="row">
-            {% if imovel %}
-            <form action="/imoveis/editar/{{ imovel.id }}" method="POST" class="mt-5">
-                {% else %}
-                <form action="/imoveis/cadastrar" method="POST" class="mt-5">
-                    {% endif %}
-
-                    <div class="row">
-                        <div class="col-12 col-md-6">
-                            <div class="form-group">
-                                <div class="form-outline">
-                                    <input type="text" name="endereco" id="endereco" class="form-control"
-                                        value="{{ imovel.endereco }}" required>
-                                    <label class="form-label" for="endereco">Endereço</label>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="form-outline">
-                                    <input type="text" name="latitude" id="latitude" class="form-control"
-                                        value="{{ imovel.latitude }}">
-                                    <label class="form-label" for="latitude">Latitude</label>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="form-outline">
-                                    <input type="text" name="longitude" id="longitude" class="form-control"
-                                        value="{{ imovel.longitude }}">
-                                    <label class="form-label" for="longitude">Longitude</label>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="form-outline">
-                                    <input type="number" name="tamanho" id="tamanho" class="form-control" min="0"
-                                        value="{{ imovel.tamanho }}">
-                                    <label class="form-label" for="tamanho">Tamanho</label>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="form-outline">
-                                    <input type="number" name="quartos" id="quartos" class="form-control" min="0"
-                                        value="{{ imovel.quartos }}" required>
-                                    <label class="form-label" for="quartos">Quartos</label>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="form-outline">
-                                    <input type="number" name="banheiros" id="banheiros" class="form-control" min="0"
-                                        value="{{ imovel.banheiros }}" required>
-                                    <label class="form-label" for="banheiros">Banheiros</label>
-                                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <div class="form-outline">
+                                <input type="text" name="endereco" id="endereco" class="form-control"
+                                    value="{{ imovel.endereco }}" required>
+                                <label class="form-label" for="endereco">Endereço</label>
                             </div>
                         </div>
 
-                        <div class="col-12 col-md-6">
-                            <div class="form-group">
-                                <div class="form-outline">
-                                    <input type="number" name="garagem" id="garagem" class="form-control" min="0"
-                                        value="{{ imovel.garagem }}" required>
-                                    <label class="form-label" for="garagem">Garagem</label>
-                                </div>
+                        <div class="form-group">
+                            <div class="form-outline">
+                                <input type="text" name="latitude" id="latitude" class="form-control"
+                                    value="{{ imovel.latitude }}">
+                                <label class="form-label" for="latitude">Latitude</label>
                             </div>
-
-                            <div class="form-group">
-                                <div class="form-outline">
-                                    <textarea name="descricao" id="descricao"
-                                        class="form-control">{{ imovel.descricao }}</textarea>
-                                    <label class="form-label" for="descricao">Descrição</label>
-                                </div>
-                            </div>
-
                         </div>
 
-                        <div class="d-flex col-12">
-                            <span data-toggle="modal" data-target="#modalMap">
-                                <button type="button" class="btn btn-outline-info btn-floating" data-toggle="tooltip"
-                                    data-placement="right" title="Abrir mapa">
-                                    <i class="fas fa-map"></i>
-                                </button>
-                            </span>
+                        <div class="form-group">
+                            <div class="form-outline">
+                                <input type="text" name="longitude" id="longitude" class="form-control"
+                                    value="{{ imovel.longitude }}">
+                                <label class="form-label" for="longitude">Longitude</label>
+                            </div>
+                        </div>
 
-                            <button class="btn btn-info ml-auto mt-5">
-                                Salvar<i class="fas fa-angle-double-right ml-1"></i>
-                            </button>
+                        <div class="form-group">
+                            <div class="form-outline">
+                                <input type="number" name="tamanho" id="tamanho" class="form-control" min="0"
+                                    value="{{ imovel.tamanho }}">
+                                <label class="form-label" for="tamanho">Tamanho</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-outline">
+                                <input type="number" name="quartos" id="quartos" class="form-control" min="0"
+                                    value="{{ imovel.quartos }}" required>
+                                <label class="form-label" for="quartos">Quartos</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-outline">
+                                <input type="number" name="banheiros" id="banheiros" class="form-control" min="0"
+                                    value="{{ imovel.banheiros }}" required>
+                                <label class="form-label" for="banheiros">Banheiros</label>
+                            </div>
                         </div>
                     </div>
 
-                </form>
-        </div>
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <div class="form-outline">
+                                <input type="number" name="garagem" id="garagem" class="form-control" min="0"
+                                    value="{{ imovel.garagem }}" required>
+                                <label class="form-label" for="garagem">Garagem</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-outline">
+                                <textarea name="descricao" id="descricao"
+                                    class="form-control">{{ imovel.descricao }}</textarea>
+                                <label class="form-label" for="descricao">Descrição</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="d-flex col-12">
+                        <span data-toggle="modal" data-target="#modalMap">
+                            <button type="button" class="btn btn-outline-info btn-floating" data-toggle="tooltip"
+                                data-placement="right" title="Abrir mapa">
+                                <i class="fas fa-map"></i>
+                            </button>
+                        </span>
+
+                        <button class="btn btn-info ml-auto mt-5">
+                            Salvar<i class="fas fa-angle-double-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </form>
     </div>
 </div>
 
@@ -128,10 +126,10 @@
     coordenadas.defined = false;
     coordenadas.latitude = -15.7717796;
     coordenadas.longitude = -47.790272;
-    
+
     const latitude = "{{ imovel.latitude }}";
     const longitude = "{{ imovel.longitude }}";
-    
+
     if (latitude && longitude) {
         coordenadas.latitude = latitude;
         coordenadas.longitude = longitude;

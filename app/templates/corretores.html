@@ -5,7 +5,7 @@
 {% include 'partials/sidebar.html' %}
 
 <div class="content anime-left h-100">
-    <div class="px-4 h-100">
+    <div class="h-100">
         <h3 class="mt-4">
             <strong>Corretores</strong>
         </h3>
@@ -17,45 +17,47 @@
         </a>
 
         {% if corretores %}
-        <table class="mt-5 table table-bordered">
-            <thead>
-                <th>CRECI</th>
-                <th>Nome</th>
-                <th>Email</th>
-                <th class="text-center"><i class="fas fa-cog"></i></th>
-            </thead>
+        <div class="table-responsive">
+            <table class="mt-5 table table-bordered">
+                <thead>
+                    <th>CRECI</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th class="text-center"><i class="fas fa-cog"></i></th>
+                </thead>
 
-            <tbody>
-                {% for corretor in corretores %}
-                <tr>
-                    <td class="align-middle">{{ corretor.creci }}</td>
-                    <td class="align-middle">{{ corretor.nome }}</td>
-                    <td class="align-middle">{{ corretor.email }}</td>
-                    <td class="text-center">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
-                                aria-expanded="false">
-                                Ver mais
-                            </button>
+                <tbody>
+                    {% for corretor in corretores %}
+                    <tr>
+                        <td class="align-middle">{{ corretor.creci }}</td>
+                        <td class="align-middle">{{ corretor.nome }}</td>
+                        <td class="align-middle">{{ corretor.email }}</td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Ver mais
+                                </button>
 
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item" href="/corretores/editar/{{ corretor.id }}">
-                                        <i class="fas fa-edit mr-2"></i>Editar
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#" onclick="apagarCorretor('{{ corretor.id }}')">
-                                        <i class="fas fa-trash-alt mr-2"></i>Apagar
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="/corretores/editar/{{ corretor.id }}">
+                                            <i class="fas fa-edit mr-2"></i>Editar
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#" onclick="apagarCorretor('{{ corretor.id }}')">
+                                            <i class="fas fa-trash-alt mr-2"></i>Apagar
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
         {% else %}
         <div class="col-12 h-50 bg-not-found mt-5">

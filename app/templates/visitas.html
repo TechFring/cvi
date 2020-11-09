@@ -5,7 +5,7 @@
 {% include 'partials/sidebar.html' %}
 
 <div class="content anime-left h-100">
-    <div class="px-4 h-100">
+    <div class="h-100">
         <h3 class="mt-4">
             <strong>Visitas</strong>
         </h3>
@@ -17,57 +17,60 @@
         </a>
 
         {% if visitas %}
-        <table class="mt-5 table table-bordered">
-            <thead>
-                <th class="text-center">Imóvel</th>
-                <th>Corretor</th>
-                <th>Dia</th>
-                <th>Cliente</th>
-                <th>Telefone</th>
-                <th class="text-center"><i class="fas fa-cog"></i></th>
-            </thead>
+        <div class="table-responsive">
 
-            <tbody>
-                {% for visita in visitas %}
-                <tr>
-                    {% if visita.capa %}
-                    <td class="text-center align-middle">
-                        <img class="img-house" src="/static/uploads/capas/{{ visita.capa }}" alt="Foto de capa">
-                    </td>
-                    {% else %}
-                    <td class="text-center align-middle"><i class="fas fa-file-image fa-2x"></i></td>
-                    {% endif %}
+            <table class="mt-5 table table-bordered">
+                <thead>
+                    <th class="text-center">Imóvel</th>
+                    <th>Corretor</th>
+                    <th>Dia</th>
+                    <th>Cliente</th>
+                    <th>Telefone</th>
+                    <th class="text-center"><i class="fas fa-cog"></i></th>
+                </thead>
 
-                    <td class="align-middle">{{ visita.nome_corretor }}</td>
-                    <td class="align-middle">{{ visita.dia_formatado }}</td>
-                    <td class="align-middle">{{ visita.nome_cliente }}</td>
-                    <td class="align-middle">{{ visita.telefone_cliente }}</td>
-                    <td class="text-center align-middle">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
-                                aria-expanded="false">
-                                Ver mais
-                            </button>
+                <tbody>
+                    {% for visita in visitas %}
+                    <tr>
+                        {% if visita.capa %}
+                        <td class="text-center align-middle">
+                            <img class="img-house" src="/static/uploads/capas/{{ visita.capa }}" alt="Foto de capa">
+                        </td>
+                        {% else %}
+                        <td class="text-center align-middle"><i class="fas fa-file-image fa-2x"></i></td>
+                        {% endif %}
 
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item" href="/visitas/editar/{{ visita.id }}">
-                                        <i class="fas fa-edit mr-2"></i>Editar
-                                    </a>
-                                </li>
+                        <td class="align-middle">{{ visita.nome_corretor }}</td>
+                        <td class="align-middle">{{ visita.dia_formatado }}</td>
+                        <td class="align-middle">{{ visita.nome_cliente }}</td>
+                        <td class="align-middle">{{ visita.telefone_cliente }}</td>
+                        <td class="text-center align-middle">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Ver mais
+                                </button>
 
-                                <li>
-                                    <a class="dropdown-item" href="#" onclick="apagarVisita('{{ visita.id }}')">
-                                        <i class="fas fa-trash-alt mr-2"></i>Apagar
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="/visitas/editar/{{ visita.id }}">
+                                            <i class="fas fa-edit mr-2"></i>Editar
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="#" onclick="apagarVisita('{{ visita.id }}')">
+                                            <i class="fas fa-trash-alt mr-2"></i>Apagar
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
         {% else %}
         <div class="col-12 h-50 bg-not-found mt-5">

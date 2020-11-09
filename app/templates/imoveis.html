@@ -5,7 +5,7 @@
 {% include 'partials/sidebar.html' %}
 
 <div class="content anime-left h-100">
-    <div class="px-4 h-100">
+    <div class="h-100">
         <h3 class="mt-4">
             <strong>Imóveis</strong>
         </h3>
@@ -17,62 +17,64 @@
         </a>
 
         {% if imoveis %}
-        <table class="mt-5 table table-bordered">
-            <thead>
-                <th class="text-center">Capa</th>
-                <th>Endereço</th>
-                <th>Tamanho</th>
-                <th>Descrição</th>
-                <th class="text-center"><i class="fas fa-cog"></i></th>
-            </thead>
+        <div class="table-responsive">
 
-            <tbody>
-                {% for imovel in imoveis %}
-                <tr>
-                    {% if imovel.capa %}
-                    <td class="text-center align-middle">
-                        <img class="img-house" src="/static/uploads/capas/{{ imovel.capa }}"
-                            alt="Foto de capa">
-                    </td>
-                    {% else %}
-                    <td class="text-center align-middle"><i class="fas fa-file-image fa-2x"></i></td>
-                    {% endif %}
+            <table class="mt-5 table table-bordered">
+                <thead>
+                    <th class="text-center">Capa</th>
+                    <th>Endereço</th>
+                    <th>Tamanho</th>
+                    <th>Descrição</th>
+                    <th class="text-center"><i class="fas fa-cog"></i></th>
+                </thead>
 
-                    <td class="align-middle">{{ imovel.endereco }}</td>
-                    <td class="align-middle">{{ imovel.tamanho }}m²</td>
-                    <td class="align-middle">{{ imovel.descricao }}</td>
-                    <td class="text-center align-middle">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
-                                aria-expanded="false">
-                                Ver mais
-                            </button>
+                <tbody>
+                    {% for imovel in imoveis %}
+                    <tr>
+                        {% if imovel.capa %}
+                        <td class="text-center align-middle">
+                            <img class="img-house" src="/static/uploads/capas/{{ imovel.capa }}" alt="Foto de capa">
+                        </td>
+                        {% else %}
+                        <td class="text-center align-middle"><i class="fas fa-file-image fa-2x"></i></td>
+                        {% endif %}
 
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item" href="/imoveis/editar/{{ imovel.id }}">
-                                        <i class="fas fa-edit mr-2"></i>Editar
-                                    </a>
-                                </li>
+                        <td class="align-middle">{{ imovel.endereco }}</td>
+                        <td class="align-middle">{{ imovel.tamanho }}m²</td>
+                        <td class="align-middle">{{ imovel.descricao }}</td>
+                        <td class="text-center align-middle">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Ver mais
+                                </button>
 
-                                <li>
-                                    <a class="dropdown-item" href="/imoveis/informacoes/{{ imovel.id }}">
-                                        <i class="far fa-life-ring mr-2"></i>Informações
-                                    </a>
-                                </li>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="/imoveis/editar/{{ imovel.id }}">
+                                            <i class="fas fa-edit mr-2"></i>Editar
+                                        </a>
+                                    </li>
 
-                                <li>
-                                    <a class="dropdown-item" href="#" onclick="apagarImovel('{{ imovel.id }}')">
-                                        <i class="fas fa-trash-alt mr-2"></i>Apagar
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                                    <li>
+                                        <a class="dropdown-item" href="/imoveis/informacoes/{{ imovel.id }}">
+                                            <i class="far fa-life-ring mr-2"></i>Informações
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="#" onclick="apagarImovel('{{ imovel.id }}')">
+                                            <i class="fas fa-trash-alt mr-2"></i>Apagar
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
         {% else %}
         <div class="col-12 h-50 bg-not-found mt-5">
