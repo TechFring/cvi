@@ -139,11 +139,13 @@ Sidebar*/
 
 .sidebar-header {
   position: fixed;
-  left: 250px;
   top: 0;
+  left: 250px;
+  height: 50px;
+  padding-top: 7px;
   padding-left: 1.5rem;
-  padding-top: 0.8rem;
-  padding-bottom: 0.3rem;
+  display: flex;
+  align-items: center;
   transition: 0.5s;
   width: 100%;
   z-index: 99;
