@@ -18,7 +18,7 @@ CVI
 
 <br />
 <div align="center">
-<img src="https://user-images.githubusercontent.com/54766216/99414684-d3b60a80-28d5-11eb-8e5e-badfb237728c.gif" height="250" width="500">
+<img src="https://user-images.githubusercontent.com/54766216/99414684-d3b60a80-28d5-11eb-8e5e-badfb237728c.gif" height="350">
 </div>
 
 <br />
