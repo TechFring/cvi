@@ -47,12 +47,12 @@ Alguns passos para configurar e rodar a aplicação no seu computador.
 <h3>1º passo:</h3>
 <span>Crie o banco. O arquivo com o banco está localizado no seguinte caminho.</span>
 
-> /datase/db.sql
+> /database/db.sql
 
 <br/>
 
 <h3>2º passo:</h3>
-<span>Acesse o arquivo abaixo e coloque e altere a linha 10 de acordo com as configurações do seu banco de dados</span>
+<span>Acesse o arquivo abaixo e altere a linha 10 de acordo com as configurações do seu banco de dados</span>
 
 > /app/__init_ _.py
 
