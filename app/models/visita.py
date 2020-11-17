@@ -4,8 +4,8 @@ from app import db
 class Visita(db.Model):
     __tablename__ = "visita"
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    id_imovel = db.Column(db.String(50), nullable=False, unique=True)
-    id_corretor = db.Column(db.String(255), nullable=False)
+    id_imovel = db.Column(db.Integer, db.ForeignKey("imovel.id", ondelete="CASCADE"), nullable=False, unique=True)
+    id_corretor = db.Column(db.Integer, db.ForeignKey("corretor.id", ondelete="CASCADE"), nullable=False)
     dia = db.Column(db.String(100), nullable=False, unique=True)
     nome_cliente = db.Column(db.String(100), nullable=False)
     telefone_cliente = db.Column(db.String(100), nullable=False)

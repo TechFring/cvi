@@ -36,7 +36,7 @@ def login():
 # def criar_usuario():
 #     nome = "Secretária"
 #     nome_usuario = "secretaria"
-#     email = "danilo030920@gmail.com"
+#     email = "seu_email@gmail.com"
 #     senha = "12345"
 #     token = str(uuid.uuid4().hex)
 

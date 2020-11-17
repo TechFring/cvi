@@ -6,6 +6,7 @@ from app.controllers import login
 from app.controllers import corretores
 from app.controllers import imoveis
 from app.controllers import visitas
+from app.controllers import configuracoes
 
 
 @app.after_request

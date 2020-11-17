@@ -16,7 +16,8 @@ html {
   }
 
   h3,
-  button {
+  button,
+  p {
     white-space: nowrap;
   }
 
@@ -70,6 +71,12 @@ Background*/
 .bg-not-found {
   background: url("../img/not-found.svg") center center no-repeat !important;
   background-size: 30% !important;
+}
+
+@media(max-width: 576px) {
+  .bg-not-found {
+    background-size: 80% !important;
+  }
 }
 
 /*
@@ -226,6 +233,3 @@ Dropdown*/
 .dropdown-item {
   cursor: pointer;
 }
-
-/*
-Email*/
