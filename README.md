@@ -18,13 +18,8 @@ CVI
 
 <br />
 <div align="center">
-<img src="https://lh3.googleusercontent.com/L3FbSQYbVWN-KxgWx8FxlIdQbwzAcRQutRsXzPHZooRUlPrfrAxjnYQtiGtTuPHKvY2OiO5azEvav98tTC-bFm0VOW4UngtXLubsPAUiWDTPaxH28ogXO7AMWw5uUFAQv0pMu10hKri0sdrxU8_m7E0p_I_44zzHRVEIsQCJvRFyiIYayPFeOkGL0UEDQdC12Z_rZHqYxOYna3Vp9o-wjr3dw-tF3gYipTelM-ii8LHQ_3pD-0JBcC5OMN71qyueC0Q6wU8lBKGnY-xncJ6A3aMKc64kruQUuAXrRwnrJQdXBKCt_h7A4Egr2FYWIRl-0JvvGtVXUJBjTD5Q3VR33pT0xOWUjZC3xV9db0CLLHmpestg4VT9a-ZtyvIzPz99_sLmPXC2ElEovY28yccsjVMZMopExkk1rIH0RbL0JgB64vh80dHnKzDWvYyEQH9myMD3nZmHnxHFGtVACr83HMc5YcFLi71tNNhiyYO2OqXrQR_78LhBVg8fNs8lG2IGXMq1PQW2emp9CCmbEZP0st5zf2IN94XWBRTpEbZ7iY5hqQUKpNWKxYy2k9R_vW0Heo5UcHhK2asbijHqqNE8m4M6bdKBG3Y6K3iTKNmfbSoOWUA1Z5WnRNe1KuYKYIhkwmVIph1xvLwPKe0pR2z-WC4eLr6Ru4yWKNxEk9pXqU5jngoWmC7a6LnDjtSy=w742-h362-no?authuser=0" height="250" width="500">
+<img src="https://user-images.githubusercontent.com/54766216/99414684-d3b60a80-28d5-11eb-8e5e-badfb237728c.gif" height="250" width="500">
 </div>
-
-<br />
-<br />
-
-<hr />
 
 <br />
 <br />
@@ -42,11 +37,6 @@ Essas foram as tecnologias utilizadas para desenvolver a aplicação:
 - ✔️ JavaScript
 
 - ✔️ MySQL
-
-<br />
-<br />
-
-<hr />
 
 <br />
 <br />
@@ -139,7 +129,7 @@ python .\main.py
 <br>
 
 <h3>7º passo:</h3>
-<span>Acesse a rota abaixo</span>
+<span>Acesse a rota abaixo.</span>
 <br/>
 <br/>
 
