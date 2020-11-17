@@ -44,13 +44,8 @@ Essas foram as tecnologias utilizadas para desenvolver a aplicação:
 ## ⚙️ Configurando a aplicação
 Alguns passos para configurar e rodar a aplicação no seu computador.
 
-<br />
-
 <h3>1º passo:</h3>
 <span>Crie o banco. O arquivo com o banco está localizado no seguinte caminho.</span>
-
-<br/>
-<br/>
 
 > /datase/db.sql
 
@@ -59,9 +54,6 @@ Alguns passos para configurar e rodar a aplicação no seu computador.
 <h3>2º passo:</h3>
 <span>Acesse o arquivo abaixo e coloque e altere a linha 10 de acordo com as configurações do seu banco de dados</span>
 
-<br/>
-<br/>
-
 > /app/__init_ _.py
 
 <br/>
@@ -69,15 +61,10 @@ Alguns passos para configurar e rodar a aplicação no seu computador.
 <h3>3º passo:</h3>
 <span>Crie o arquivo de configuração no seguinte caminho.</span>
 
-<br/>
-<br/>
-
 > /app/config.json
 
 <br />
 Conteúdo do arquivo
-<br />
-<br />
 
 ```
 {
@@ -95,9 +82,6 @@ Conteúdo do arquivo
 <h3>4º passo:</h3>
 <span>Crie os diretórios abaixo.</span>
 
-<br/>
-<br/>
-
 > /app/static/uploads/capas
 
 > /app/static/uploads/docs
@@ -109,17 +93,12 @@ Conteúdo do arquivo
 <h3>5º passo:</h3>
 <span>Acesse o arquivo abaixo, descomente da linha 34 até a linha 47 e coloque as informações de login da sua conta.</span>
 
-<br/>
-<br/>
-
 > /app/controllers/login.py
 
 <br />
 
 <h3>6º passo:</h3>
 <span>Abra o terminal, acesse a raiz do projeto e execute os comandos abaixo. (instale o pipenv antes caso ainda não tenha)</span>
-<br/>
-<br/>
 
 ```
 pipenv shell
@@ -130,8 +109,6 @@ python .\main.py
 
 <h3>7º passo:</h3>
 <span>Acesse a rota abaixo.</span>
-<br/>
-<br/>
 
 ```
 http://localhost:5000/login/criar-usuario
