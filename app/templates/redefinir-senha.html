@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+{% block title %}{{ super() }}Redefinir senha{% endblock %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+
+<div class="h-100 d-flex anime-left">
+    <div class="d-flex align-items-center justify-content-center w-100 col-12 col-sm-6 flex-column">
+        <div class="w-75 px-sm-5 container-login">
+            <div>
+                <a href="/login">
+                    <button class="btn btn-light btn-floating mb-5">
+                        <i class="fa fa-arrow-left"></i>
+                    </button>
+                </a>
+
+                <h2 class="mb-4 pt-5">Encontre agora mesmo os melhores imóveis.</h2>
+
+                <p class="mb-5">Informe o seu email para iniciar o processo de redefinição de senha.</p>
+
+                {% if messages %}
+                {% for category, message in messages %}
+                    <p class="text-{{ category }}">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <small>{{ message }}</small>
+                    </p>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </div>
+
+            <form action="/redefinir-senha" method="POST">
+                <div class="form-group">
+                    <div class="form-outline">
+                        <input type="email" name="email" id="email" class="form-control" required />
+                        <label class="form-label" for="email">Email</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-warning mt-5">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="d-none d-sm-block col-sm-6 bg-login">
+    </div>
+</div>
+
+{% endblock %}

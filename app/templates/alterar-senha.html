@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% block title %}{{ super() }}Entrar{% endblock %}
+{% block title %}{{ super() }}Redefinir senha{% endblock %}
 
 {% block content %}
 
@@ -11,39 +11,28 @@
             <div>
                 <h2 class="mb-4 pt-5">Encontre agora mesmo os melhores imóveis.</h2>
 
-                <p class="mb-5">Bem-vindo de volta! Por favor acesse sua conta.</p>
+                <p class="mb-5">Informe a sua nova senha.</p>
 
                 {% if messages %}
                 {% for category, message in messages %}
-                <p class="text-{{ category }}">
-                    <i class="fas fa-exclamation-circle"></i>
-                    <small>{{ message }}</small>
-                </p>
+                    <p class="text-{{ category }}">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <small>{{ message }}</small>
+                    </p>
                 {% endfor %}
                 {% endif %}
                 {% endwith %}
             </div>
 
-            <form action="/login" method="POST">
-                <div class="form-group">
-                    <div class="form-outline">
-                        <input type="text" name="nome_usuario" id="nome_usuario" class="form-control" required />
-                        <label class="form-label" for="nome_usuario">Usuário</label>
-                    </div>
-                </div>
-
+            <form method="POST" id="formAlterar">
                 <div class="form-group">
                     <div class="form-outline">
                         <input type="password" name="senha" id="senha" class="form-control" required />
                         <label class="form-label" for="senha">Senha</label>
                     </div>
-
-                    <a href="/redefinir-senha">
-                        <small class="float-right mt-1">Esqueceu sua senha?</small>
-                    </a>
                 </div>
 
-                <button type="submit" class="btn btn-warning mt-5">Entrar</button>
+                <button class="btn btn-warning mt-5">Salvar</button>
             </form>
         </div>
     </div>
@@ -51,5 +40,14 @@
     <div class="d-none d-sm-block col-sm-6 bg-login">
     </div>
 </div>
+
+<script>
+    const urlString = window.location.href;
+    const url = new URL(urlString)
+    const path = url.pathname.split("/")
+    const form = document.getElementById("formAlterar")
+
+    form.setAttribute("action", `/alterar-senha/${path[2]}`)
+</script>
 
 {% endblock %}
