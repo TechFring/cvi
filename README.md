@@ -6,7 +6,7 @@
 CVI
 </h1>
 
-<p>CVI é o acrônimo de Controle de Visitas Imobiliárias. Trata-se de um trabalho acadêmico desenvolvido nas seguintes matérias: Tópicos Avançados em Análise e Desenvolvimento de Sistemas (professor Wanderson Pereira dos Santos) e Modelagem de Software Orientado a Objetos (professor Leomar Camargo de Souza). Dentre as funcionalidades da aplicação podemos citar:
+<p>CVI é o acrônimo de Controle de Visitas Imobiliárias. Trata-se de um trabalho acadêmico desenvolvido nas seguintes matérias: Tópicos Avançados em Análise e Desenvolvimento de Sistemas (professor Wanderson Pereira dos Santos) e Modelagem de Software Orientado a Objetos (professor Leomar Camargo de Souza). Dentre as funcionalidades da aplicação pode-se destacar:
 <ul>
     <li>Login</li>
     <li>Envio de emails</li>
