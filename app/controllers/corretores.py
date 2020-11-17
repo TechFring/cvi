@@ -42,7 +42,7 @@ def cadastrar_corretor():
 def editar_corretor(id):
     if not current_user.is_authenticated:
         return redirect(url_for("login"))
-    
+
     # recupera os dados do corretor
     corretor = Corretor.query.filter_by(id=id).first()
 
@@ -57,7 +57,7 @@ def editar_corretor(id):
     corretor.nome = request.form['nome']
     corretor.email = request.form['email']
     corretor.senha = request.form['senha']
-    
+
     db.session.commit()
 
     return redirect(url_for("corretores"))
@@ -67,7 +67,7 @@ def editar_corretor(id):
 def apagar_corretor(id):
     if not current_user.is_authenticated:
         return redirect(url_for("login"))
-    
+
     # recupera os dados do corretor
     corretor = Corretor.query.filter_by(id=id).first()
 

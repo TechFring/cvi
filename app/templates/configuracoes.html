@@ -5,6 +5,46 @@
 {% include 'partials/sidebar.html' %}
 
 <div class="content anime-left h-100">
+    <div class="h-100">
+        <h3 class="mt-4">
+            <strong>Configurações</strong>
+        </h3>
 
+        <button class="btn btn-warning mt-5" data-toggle="modal" data-target="#modalConfiguracoes">
+            Alterar dados
+        </button>
+
+        <div class="row my-5">
+            <div class="col-12 col-lg-6">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Nome</th>
+                            <td>{{secretaria.nome}}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Usuário</th>
+                            <td>{{secretaria.nome_usuario}}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Email</th>
+                            <td>{{secretaria.email}}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Senha</th>
+                            <td class="text-center"><i class="fas fa-lock"></i></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+{% include 'partials/modal-configuracoes.html' %}
+
+<script src="{{ url_for('static', filename='js/configuracoes.js') }}"></script>
 {% endblock %}
