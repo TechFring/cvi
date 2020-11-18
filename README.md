@@ -91,7 +91,7 @@ Conteúdo do arquivo
 <br/>
 
 <h3>5º passo:</h3>
-<span>Acesse o arquivo abaixo, descomente da linha 34 até a linha 47 e coloque as informações de login da sua conta.</span>
+<span>Acesse o arquivo abaixo, descomente da linha 35 até a linha 47 e coloque as informações de login da sua conta.</span>
 
 > /app/controllers/login.py
 
