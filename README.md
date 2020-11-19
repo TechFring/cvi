@@ -114,4 +114,4 @@ python .\main.py
 http://localhost:5000/login/criar-usuario
 ```
 
-<br>
+Feito com ❤️
